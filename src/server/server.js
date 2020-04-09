@@ -22,6 +22,10 @@ app.get('/', (req,res)=>{
     res.sendFile('dist/index.html')
 })
 
+// app.post('/mytrips', (req,res)=>{
+
+// })
+
 const port = 3000;
 const server = app.listen(port, listening);
 
