@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel App</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Travel App</h1>
+        </header>
+        <section>
+            <article>
+                <form action="" id="form">
+                    <input type="text" id="destination" name="destination" placeholder="Destination">
+                    <input type="date" name="fechaViaje" id="fechaViaje" placeholder="Date to trip">
+                    <input type="submit" id="send" value="Send">
+                </form>
+            </article>
+            <div id="resultados">
+
+            </div>
+        </section>
+        <footer id="footer"></footer>
+    </div>
+    <script>
+        //check that service workers are supported
+        if('serviceWorker' in navigator){
+            //Use the window load event to keep the page load performant
+            window.addEventListener('load', ()=>{
+                navigator.serviceWorker.register('/service-worker.js');
+            });
+        }
+    </script>
+</body>
+</html>

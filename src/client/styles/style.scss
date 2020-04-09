@@ -1,0 +1,150 @@
+$header-bg: #435F9C;
+$footer-bg:#1A2B4F;
+$font-claro: #f3f3f3;
+$website-bg: #f3f3f3;
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+    background: $website-bg;
+}
+
+.container{
+    min-width: 370px;
+    width: 100vw;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, auto);
+    grid-template-areas: "header header header"
+    "section section section"
+    "footer footer footer";
+}
+
+header{
+    grid-area: header;
+    height: 10vh;
+    background: $header-bg;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+header h1{
+    margin-left: 80px;
+    font-size: 1.8em;
+    color: $font-claro;
+}
+
+section{
+    grid-area: section;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+section article{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+}
+
+#form{
+    width: 80%;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+}
+
+#form>input:nth-child(1){
+    width: 75%;
+    padding: 15px;
+    border: none;
+    margin-bottom: 8px;
+    outline: none;
+}
+
+#form>input:nth-child(2){
+    width: 75%;
+    padding: 15px;
+    border: none;
+    margin-bottom: 8px;
+    outline: none;
+}
+
+#form>input[type="submit"]{
+    width: 80px;
+    height: 40px;
+    background: $footer-bg;
+    color: $font-claro;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+#resultados{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+}
+
+footer{
+    background: $footer-bg;
+    grid-area: footer;
+    width: 100vw;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footerCopy{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.footerCopy h3{
+    font-size: 1em;
+    font-weight: normal;
+    color: $font-claro;
+}
+
+.showResults{
+    width: 90%;
+    height: 100%;
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.showMessage{
+    width: 90%;
+    height: 100%;
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.showMessage p{
+    color: #000;
+    font-size: 1em;
+}
+
+.showMessage p{
+    color: red;
+    font-size: 1em;
+}
