@@ -1,10 +1,3 @@
-export class Datos{
-    constructor(destination, fecha){
-        this.destination = destination;
-        this.fecha = fecha;
-    }
-}
-
 export class UI{
     footer(){
         const today = new Date;
@@ -26,12 +19,13 @@ export class UI{
         })
     }
 
-    showResults(datos){
+    showResults(destination, dateStart, dateFinish){
         const resultados = document.getElementById('resultados');
         const element = document.createElement('div');
         element.classList.add('showResults');
-        element.innerHTML = `<p>${datos.destination}</p>`;
-        element.innerHTML += `<p>${datos.fecha}</p>`;
+        element.innerHTML = `<p>Ud. desea viajar a <b>${destination}</b></p>`;
+        element.innerHTML += `<p>Desde el ${dateStart}</p>`;
+        element.innerHTML += `<p>Hasta el ${dateFinish}</p>`;
         resultados.appendChild(element);
     }
 
