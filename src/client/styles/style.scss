@@ -58,28 +58,30 @@ section article{
 
 #form{
     width: 80%;
-    height: 40%;
+    height: 60%;
     display: flex;
     flex-direction: column;
 }
 
-#form>input:nth-child(1){
+#form>#destination, #country, #dateStart, #dateFinish{
     width: 75%;
     padding: 15px;
     border: none;
     margin-bottom: 8px;
     outline: none;
+    margin-bottom: 10px;
 }
 
-#form>input:nth-child(2){
-    width: 75%;
-    padding: 15px;
-    border: none;
-    margin-bottom: 8px;
-    outline: none;
+#form>label{
+    font-size: 0.9em;
+    color: $footer-bg;
 }
 
-#form>input[type="submit"]{
+#dateFinish{
+    margin-bottom: 10px;
+}
+
+#form>#send{
     width: 80px;
     height: 40px;
     background: $footer-bg;
