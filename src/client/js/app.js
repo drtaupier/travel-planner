@@ -21,9 +21,7 @@ export function handleSubmit(e){
         day = "0" + day;
     }
     const fechaActual = `${today.getFullYear()}-${month}-${day}`;
-    console.log(fechaActual);
-    console.log(dateStart);
-    
+    //Validación
     if(destination === "" || dateStart === "" || dateFinish === ""){
         ui.showMessage('Please, complete the form');
         return false;
@@ -52,6 +50,7 @@ export const postData = async(url='', data={})=>{
     });
     try{
         const newData = await response.json();
+        console.log(newData);
         return newData;
    }catch(error){
        console.log('Error: ', error);
