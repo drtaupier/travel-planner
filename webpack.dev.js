@@ -10,6 +10,9 @@ module.exports = {
     path: path.join(__dirname, 'dist'),
     filename: 'main.js'
   },
+  node: {
+    fs: "empty"
+ },
   module: {
       rules:[
         {
@@ -24,7 +27,13 @@ module.exports = {
        {
            test: /\.scss$/,
            use: ['style-loader', 'css-loader', 'sass-loader']
-       }
+       },
+       {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: [
+          'file-loader',
+        ],
+      },
     ]
   },
   plugins:[
