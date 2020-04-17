@@ -2,6 +2,7 @@ $header-bg: #435F9C;
 $footer-bg:#1A2B4F;
 $font-claro: #f3f3f3;
 $website-bg: #f3f3f3;
+$bg-blanco: #fff;
 *{
     padding: 0;
     margin: 0;
@@ -41,7 +42,8 @@ header h1{
 
 section{
     grid-area: section;
-    height: 80vh;
+    min-height: 80vh;
+    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -95,6 +97,7 @@ section article{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     width: 50%;
     height: 100%;
 }
@@ -123,7 +126,7 @@ footer{
 }
 
 .showResults{
-    width: 90%;
+    width: 70%;
     height: 100%;
     border: 1px solid #ccc;
     display: flex;

@@ -19,13 +19,17 @@ export class UI{
         })
     }
 
-    showResults(destination, dateStart, dateFinish){
+    showResults(newData){
         const resultados = document.getElementById('resultados');
         const element = document.createElement('div');
         element.classList.add('showResults');
-        element.innerHTML = `<p>Ud. desea viajar a <b>${destination}</b></p>`;
-        element.innerHTML += `<p>Desde el ${dateStart}</p>`;
-        element.innerHTML += `<p>Hasta el ${dateFinish}</p>`;
+        element.innerHTML = `<p>Ud. desea viajar a <b>${newData.destination}</b></p>`;
+        element.innerHTML += `<p><b>${newData.country}</b></p>`;
+        element.innerHTML += `<p>Desde el ${newData.dateStart}</p>`;
+        element.innerHTML += `<p>Hasta el ${newData.dateFinish}</p>`;
+        element.innerHTML += `<p><img src='${newData.imageWeb}'></p>`;
+        element.innerHTML += `<p>Weather Forecast: ${newData.weatherDescription}</p>`;
+        element.innerHTML += `<p>Cº: ${newData.weatherTemp}</p>`;
         resultados.appendChild(element);
     }
 
@@ -37,3 +41,4 @@ export class UI{
         resultados.appendChild(element);
     }
 }
+

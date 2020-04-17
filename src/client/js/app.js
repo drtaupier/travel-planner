@@ -1,4 +1,5 @@
 import {UI} from './classes'
+import {readCountry} from './countries'
 //Variables globales:
 const form = document.getElementById('form');
 //Instanciando clases:
@@ -7,7 +8,14 @@ export function handleSubmit(e){
     e.preventDefault();
     ui.delete();
     //Variables:
-    const destination = document.getElementById('destination').value;
+    const destination = document.getElementById('destination').value; 
+    const country1 = document.getElementById('country').value;
+    let country = "";
+    if (country1 === ""){
+        country = 'US';
+    }else{
+        country = readCountry(country1);
+    }
     const dateStart = document.getElementById('dateStart').value;
     const dateFinish = document.getElementById('dateFinish').value;
     const today = new Date();
@@ -30,15 +38,14 @@ export function handleSubmit(e){
         return false;
     }else if(dateStart > dateFinish){
         ui.showMessage('The date is wrong, please, try again');
-    }else{
-        ui.showResults(destination, dateStart, dateFinish);
-        postData('/myTrips', {'destination':destination, 'dateStart':dateStart, 'dateFinish':dateFinish});
+    }else{        
+        postData('/myTrips', {'destination':destination, 'country':country, 'dateStart':dateStart, 'dateFinish':dateFinish});
     }
 }
 
 form.addEventListener('submit', handleSubmit, false);
 
-export const postData = async(url='', data={})=>{
+const postData = async(url='', data={})=>{
     const response = await fetch(url,{
         method:'POST', //*GET, POST, PUT, DELETE, etc.
         credentials:'same-origin',
@@ -50,7 +57,7 @@ export const postData = async(url='', data={})=>{
     });
     try{
         const newData = await response.json();
-        console.log(newData);
+        ui.showResults(newData);
         return newData;
    }catch(error){
        console.log('Error: ', error);
