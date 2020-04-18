@@ -1,6 +1,5 @@
 require('dotenv').config();
 var Request = require("request");
-const callApi = require('./callApi')
 //Express to run server and routes
 const express = require('express');
 //Start up an instance of app
@@ -28,6 +27,7 @@ app.post('/myTrips', (req,res)=>{
     let dateStart = req.body.dateStart;
     let dateFinish = req.body.dateStart;
     let countryCode = req.body.country;
+    let diferencia = req.body.diferencia;
     let lat = "";
     let long = "";
     let weather = "";
@@ -40,48 +40,42 @@ app.post('/myTrips', (req,res)=>{
         //Get latitude and longitude
         let geoNamesData = JSON.parse(body);        
         lat = geoNamesData.postalCodes[0].lat;
-        long = geoNamesData.postalCodes[0].lng;
-        console.log('latitud: ',lat);
-        
+        long = geoNamesData.postalCodes[0].lng;        
         
         let weatherUrl = `https://api.weatherbit.io/v2.0/current?&lat=${lat}&lon=${long}&key=${process.env.WEATHERBIT_KEY}`;
         Request.get(weatherUrl, (error2, response2, body2) => {
             if(error2) {
                 return console.dir(error2);
             }
-        //Get weather information
-        let weatherData = JSON.parse(body2);
-        weatherTemp = weatherData.data[0].temp;
-        weatherDescription = weatherData.data[0].weather.description;
-        console.log('Temperature: ',weather);
-            if(error2){
-                return console.dir(error3);
-            }
+            //Get weather information
+            let weatherData = JSON.parse(body2);
+            weatherTemp = weatherData.data[0].temp;
+            weatherDescription = weatherData.data[0].weather.description;
+                if(error2){
+                    return console.dir(error3);
+                }
             let destinationReplace = destination.replace(', ','+');
             let pixabayUrl = `https://pixabay.com/api/?key=${process.env.PIXABAY_KEY}&q=${destinationReplace}+${countryCode}&image_type=photo&orientation=horizontal&page=1&per_page=3`;
-        Request.get(pixabayUrl, (error3, response3, body3) => {
-            if(error3){
-                return console.dir(error3);
-            }
-        //Get pixar information
-        let pixarData = JSON.parse(body3);
-        let pixar = "";
-        if(pixarData.hits.length > 0){
-            pixar = pixarData.hits[0].webformatURL;
-        }else{
-            let pixabayCountryurl = `https://pixabay.com/api/`;
-        }
-        let info = {
-            "weatherTemp":weatherTemp,
-            "weatherDescription":weatherDescription,
-            "imageWeb":pixar,
-            "destination": destination,
-            "country": countryCode,
-            "dateStart": dateStart,
-            "dateFinish": dateFinish
-        }
-        res.send(info);
-    });
+            Request.get(pixabayUrl, (error3, response3, body3) => {
+                if(error3){
+                    return console.dir(error3);
+                }
+                //Get pixar information
+                let pixarData = JSON.parse(body3);
+                let pixar = pixarData.hits[0].webformatURL;
+
+                let info = {
+                    "weatherTemp":weatherTemp,
+                    "weatherDescription":weatherDescription,
+                    "imageWeb":pixar,
+                    "destination": destination,
+                    "country": countryCode,
+                    "dateStart": dateStart,
+                    "dateFinish": dateFinish,
+                    "diferencia": diferencia
+                }
+                res.send(info); //Info enviada al cliente
+            });
         });
     });
 })

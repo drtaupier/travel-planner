@@ -18,6 +18,12 @@ export function handleSubmit(e){
     }
     const dateStart = document.getElementById('dateStart').value;
     const dateFinish = document.getElementById('dateFinish').value;
+    
+    let fechaInicio = new Date(dateStart);
+    let fechaFin = new Date(dateFinish);
+
+    let diferencia = (Math.abs(fechaFin.getTime() - fechaInicio.getTime()))/(1000*60*60*24);
+   
     const today = new Date();
     //Variables para validación de fecha
     let month = (today.getMonth()+1).toString();
@@ -39,7 +45,7 @@ export function handleSubmit(e){
     }else if(dateStart > dateFinish){
         ui.showMessage('The date is wrong, please, try again');
     }else{        
-        postData('/myTrips', {'destination':destination, 'country':country, 'dateStart':dateStart, 'dateFinish':dateFinish});
+        postData('/myTrips', {'destination':destination, 'country':country, 'dateStart':dateStart, 'dateFinish':dateFinish, 'diferencia':diferencia});
     }
 }
 
