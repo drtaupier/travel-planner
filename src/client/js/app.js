@@ -21,7 +21,7 @@ export function handleSubmit(e){
     
     let fechaInicio = new Date(dateStart);
     let fechaFin = new Date(dateFinish);
-
+    //Obteniendo la diferencia de dias entre inicio y fin del viaje
     let diferencia = (Math.abs(fechaFin.getTime() - fechaInicio.getTime()))/(1000*60*60*24);
    
     const today = new Date();
