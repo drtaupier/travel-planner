@@ -94,6 +94,7 @@ section article{
 }
 
 #resultados{
+    padding: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -126,13 +127,24 @@ footer{
 }
 
 .showResults{
-    width: 70%;
+    width: 100%;
+    padding: 20px;
     height: 100%;
     border: 1px solid #ccc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+}
+
+.showResults h2{
+    font-size: 1.2em;
+}
+
+.showResults p{
+    font-size: 0.9em;
+    line-height: 2em;
+}
+
+.showResults img{
+    width: 50%;
+    float: right;
 }
 
 .showMessage{
