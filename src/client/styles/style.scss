@@ -3,6 +3,7 @@ $footer-bg:#1A2B4F;
 $font-claro: #f3f3f3;
 $website-bg: #f3f3f3;
 $bg-blanco: #fff;
+$inputBorde: #ccc;
 *{
     padding: 0;
     margin: 0;
@@ -27,6 +28,7 @@ body{
 
 header{
     grid-area: header;
+    min-width: 370px;
     height: 10vh;
     background: $header-bg;
     display: flex;
@@ -60,30 +62,67 @@ section article{
 
 #form{
     width: 80%;
+    min-width: 600px;
     height: 60%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    border: 1px solid $inputBorde;
 }
 
-#form>#destination, #country, #dateStart, #dateFinish{
-    width: 75%;
-    padding: 15px;
+fieldset{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 15px;
     border: none;
-    margin-bottom: 8px;
-    outline: none;
-    margin-bottom: 10px;
 }
 
-#form>label{
-    font-size: 0.9em;
+fieldset>table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+fieldset>table>tr{
+    width: 100%;
+}
+
+fieldset>table>td{
+    width: 25%;
+}
+
+input[type=text]{
+    padding: 15px;
+    width: 100%;
+    outline: 0;
+    border: 1px solid $inputBorde;
+}
+
+input[type=date]{
+    padding: 15px;
+    width: 100%;
+    outline: 0;
+    border: 1px solid $inputBorde;
+    background: $bg-blanco;
+}
+
+label{
+    font-size: 0.85em;
     color: $footer-bg;
 }
 
-#dateFinish{
-    margin-bottom: 10px;
+td:nth-child(1){
+    width: 12%;
+    text-align: center;
 }
 
-#form>#send{
+td:nth-child(3){
+    text-align: right;
+    padding-right: 8px;
+}
+
+#send{
     width: 80px;
     height: 40px;
     background: $footer-bg;
@@ -91,6 +130,7 @@ section article{
     border: none;
     outline: none;
     cursor: pointer;
+    margin-left: -65%;
 }
 
 #resultados{
@@ -106,6 +146,7 @@ section article{
 footer{
     background: $footer-bg;
     grid-area: footer;
+    min-width: 370px;
     width: 100vw;
     height: 10vh;
     display: flex;
@@ -143,8 +184,20 @@ footer{
 }
 
 .showResults img{
+    min-width: 320px;
     width: 50%;
     float: right;
+}
+
+.showResults a{
+    width: 30%;
+    height: 76px;
+    background: $footer-bg;
+    color: $font-claro;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 0.9em;
+    padding: 8px;
 }
 
 .showMessage{
@@ -157,11 +210,192 @@ footer{
 }
 
 .showMessage p{
-    color: #000;
+    color: red;
     font-size: 1em;
 }
 
-.showMessage p{
-    color: red;
-    font-size: 1em;
+@media (max-width:1300px){
+    section{
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    #resultados{
+        width: 100vw;
+    }
+
+    .showResults{
+        width: 600px;
+        min-width: 600px;
+    }
+
+}
+
+@media (max-width:768px){
+    section{
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    #resultados{
+        width: 100vw;
+        min-width: 100vw;
+    }
+
+    .showResults{
+        width: 600px;
+        min-width: 600px;
+    }
+}
+
+@media (max-width:600px){
+    section{
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    #form{
+        width: 100vw;
+        min-width: 100vw;
+    }
+
+    #resultados{
+        width: 100vw;
+        min-width: 100vw;
+    }
+
+    .showResults{
+        width: 100vw;
+        min-width: 100vw;
+    }
+}
+
+@media (max-width:590px){
+    .container{
+        grid-template-columns: 1vw;
+        grid-template-areas:
+        "header"
+        "section"
+        "footer";
+    }
+
+    section{
+        flex-direction: column;
+    }
+
+    section>article{
+        width: 100vw;
+        height: 80vh;
+        justify-content: center;
+        align-items: center;
+    }
+
+    section>article>form{
+        width: 100%;
+        padding: 0;
+    }
+
+    section>article>form>fieldset{
+        padding: 10px;
+        width: 100vw;
+        display: flex;
+        align-items: center;
+    }
+
+    fieldset>table{
+        width: 100%;
+    }
+
+    tbody{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    tbody>tr{
+        width: 100%;
+    }
+
+    td{
+        display: flex;
+        width: 100%;
+    }
+
+    fieldset>table>tr>td:nth-child(odd){
+        display: flex;
+        justify-content: left;
+        margin-right: 0;
+    }
+
+    input[type=text]{
+        width: 95%;
+        margin-left: -10px;
+        min-width: 370px;
+    }
+
+    input[type=date]{
+        width: 95%;
+        background: $bg-blanco;
+        margin-left: -10px;
+        min-width: 370px;
+    }
+
+    #send{
+        margin-left: -10%;
+        min-width: 74px;
+    }
+
+    .showResults{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .showResults img{
+        float:none;
+        width: 100%;
+    }
+}
+
+@media (max-width:450px){
+
+    header{
+        width: 100vw;
+    }
+
+    header h1{
+        margin-left: 40px;
+    }
+
+    #form{
+        width: 100vw;
+        min-width: 370px;
+    }
+
+    fieldset{
+        border-bottom: 0;
+    }
+
+    input[type=text]{
+        width: 100vw;
+        margin-left: -30px;
+        min-width: 370px;
+    }
+
+    input[type=date]{
+        width: 100vw;
+        margin-left: -30px;
+        min-width: 370px;
+    }
+
+    #send{
+        min-width: 74px;
+    }
+
+    footer{
+        width: 100vw;
+    }
 }
