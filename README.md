@@ -23,3 +23,11 @@ In order to use the application, you must enter the city where you want to go. I
 Then, the application is configured for all default searches of the sea in the United States, so if you want to go to any other country, it must be specified in the country of entry.
 Then you must enter the date you want to travel and the return date, then click the Send button.
 Our search will return us (if the site has been found), the destination where you are going, the date of the trip, the date of return, the number of days that the trip will last, the temperature of the site and a description of the weather from the destination.
+
+## Project details
+
+* Form:
+![alt text](https://github.com/drtaupier/travel/tree/master/img/form.png)
+
+* Results: As we can see, the results contain icons, as well as a button to delete the results.
+![alt text](https://github.com/drtaupier/travel/tree/master/img/result.png)
