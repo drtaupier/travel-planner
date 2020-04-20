@@ -248,8 +248,6 @@ let countries = [
     for(const index in countries){
       if(countryCode == countries[index].code){
         return countries[index].name;    
-    }else{
-      return "Country not found";
     }
   }
 }

@@ -32,13 +32,13 @@ app.post('/myTrips', (req,res)=>{
     let lat = "";
     let long = "";
     let geoUrl = `http://api.geonames.org/postalCodeSearchJSON?placename=${destination}&maxRows=1&operator=AND&country=${countryCode}&username=${process.env.GEONAMES_USERNAME}`;
-    
     Request.get(geoUrl, (error, response, body) => {
         if(error) {
             return console.dir(error);
         }
         //Get latitude and longitude
-        let geoNamesData = JSON.parse(body);        
+        let geoNamesData = JSON.parse(body);
+        console.dir(geoNamesData);      
         lat = geoNamesData.postalCodes[0].lat;
         long = geoNamesData.postalCodes[0].lng;        
         
@@ -78,7 +78,9 @@ app.post('/myTrips', (req,res)=>{
                     res.send(info); //Info enviada al cliente
                 }else{
                     let country = readCountryName(countryCode);
-                    console.log(country);
+                    console.log('Nombre país: ',country);
+                    console.log('Code:', countryCode);
+                    
                     pixarCountryUrl = `https://pixabay.com/api/?key=${process.env.PIXABAY_KEY}&q=${country}&image_type=photo&orientation=horizontal&page=1&per_page=3`;
                     console.log(pixarCountryUrl);
                     
