@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const workboxPlugin = require('workbox-webpack-plugin');
+const WorkboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = {
   mode: 'production',
@@ -11,6 +11,9 @@ module.exports = {
     path: path.join(__dirname, 'dist'),
     filename: 'main.js'
   },
+  node: {
+    fs: "empty"
+ },
   module: {
       rules:[
         {
@@ -25,7 +28,13 @@ module.exports = {
        {
            test: /\.scss$/,
            use: ['style-loader', 'css-loader', 'sass-loader']
-       }
+       },
+       {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: [
+          'file-loader',
+        ],
+      },
     ]
   },
   plugins:[
@@ -41,6 +50,6 @@ module.exports = {
         cleanStaleWebpackAssets:true,
         protectWebpackAssets:false
     }),
-    new workboxPlugin.GenerateSW()
+    new WorkboxPlugin.GenerateSW()
 ]
 };
