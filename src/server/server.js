@@ -37,8 +37,7 @@ app.post('/myTrips', (req,res)=>{
             return console.dir(error);
         }
         //Get latitude and longitude
-        let geoNamesData = JSON.parse(body);
-        console.dir(geoNamesData);      
+        let geoNamesData = JSON.parse(body);      
         lat = geoNamesData.postalCodes[0].lat;
         long = geoNamesData.postalCodes[0].lng;        
         
@@ -78,11 +77,8 @@ app.post('/myTrips', (req,res)=>{
                     res.send(info); //Info enviada al cliente
                 }else{
                     let country = readCountryName(countryCode);
-                    console.log('Nombre país: ',country);
-                    console.log('Code:', countryCode);
                     
                     pixarCountryUrl = `https://pixabay.com/api/?key=${process.env.PIXABAY_KEY}&q=${country}&image_type=photo&orientation=horizontal&page=1&per_page=3`;
-                    console.log(pixarCountryUrl);
                     
                     Request.get(pixarCountryUrl, (error4,response4, body4) => {
                         if(error4){
