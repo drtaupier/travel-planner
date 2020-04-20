@@ -27,7 +27,8 @@ Our search will return us (if the site has been found), the destination where yo
 ## Project details
 
 * Form:
-![alt text](https://github.com/drtaupier/travel/tree/master/img/form.png)
+![form](https://user-images.githubusercontent.com/25469950/79727355-4a484680-82ba-11ea-9565-cc4d92c78976.png)
+
 
 * Results: As we can see, the results contain icons, as well as a button to delete the results.
-![alt text](https://github.com/drtaupier/travel/tree/master/img/result.png)
+![result](https://user-images.githubusercontent.com/25469950/79727487-795eb800-82ba-11ea-836b-fc4c540da036.png)
