@@ -15,7 +15,7 @@ In order to develop this project, I connected my project with 3 Rest API:
 * [Weatherbit](https://www.weatherbit.io/account/create)
 * [Pixabay](https://pixabay.com/api/docs/)
 
-which provides me with information on various places, from latitude, longitude, weather forecast, images of each place, etc:
+which provides me with information on various places, from latitude, longitude, weather forecast, images of each place, etc.
 
 ## Using the app
 
