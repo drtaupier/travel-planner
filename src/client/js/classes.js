@@ -5,14 +5,15 @@ export class UI{
         const footer = document.getElementById('footer');
         const element = document.createElement('div');
         element.classList.add('footerCopy');
-        element.innerHTML = `<h3>&copy; Copyright ${year}`;
+        element.innerHTML = `<h3>Copyright &copy; David Rivera T. - ${year}</h3>`;
         footer.appendChild(element);
     }
 
     delete(){
+        const resultados = document.getElementById('resultados');
         const boton = document.getElementById('send');
         boton.addEventListener('click', ()=>{
-            const resultado = boton.parentElement.parentElement.nextElementSibling.firstElementChild;
+            const resultado = resultados.firstElementChild;
             if(resultado){
                 resultado.remove();
             }
@@ -20,7 +21,7 @@ export class UI{
     }
 
     showResults(newData){
-        const temperature = Math.round((newData.weatherTemp * 9/5)+32);
+        const temperature = Math.round((newData.weatherTemp * 9/5)+32); //Convierte de Celsius a F.
         const resultados = document.getElementById('resultados');
         const element = document.createElement('div');
         element.classList.add('showResults');
@@ -31,8 +32,15 @@ export class UI{
         element.innerHTML += `<p><i class="fas fa-plane-arrival"></i> ${newData.dateFinish}</p>`;
         element.innerHTML += `<p>Your trip will be for <b>${newData.diferencia} days</b></p>`;
         element.innerHTML += `<p><b>Weather Forecast:</b> ${temperature} &#176;F </p>`;
-        element.innerHTML += `<p>${newData.weatherDescription}</p>`;
+        element.innerHTML += `<p>${newData.weatherDescription}</p><br>`;
+        element.innerHTML += `<a href="#" name="delete">Delete</a>`;
         resultados.appendChild(element);
+    }
+
+    deleteResult(element){
+        if(element.name === 'delete'){
+            element.parentElement.remove();
+        }
     }
 
     showMessage(mensaje){

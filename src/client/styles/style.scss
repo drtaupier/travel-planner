@@ -92,14 +92,21 @@ fieldset>table>td{
     width: 25%;
 }
 
-input[type=text]{
+input:nth-child(1){
     padding: 15px;
     width: 100%;
     outline: 0;
     border: 1px solid $inputBorde;
 }
 
-input[type=date]{
+input:nth-child(2){
+    padding: 15px;
+    width: 100%;
+    outline: 0;
+    border: 1px solid $inputBorde;
+}
+
+input:nth-child(3){
     padding: 15px;
     width: 100%;
     outline: 0;
@@ -331,13 +338,26 @@ footer{
         margin-right: 0;
     }
 
-    input[type=text]{
+    input:nth-child(1){
         width: 95%;
         margin-left: -10px;
         min-width: 370px;
     }
 
-    input[type=date]{
+    input:nth-child(2){
+        width: 95%;
+        margin-left: -10px;
+        min-width: 370px;
+    }
+
+    input:nth-child(3){
+        width: 95%;
+        background: $bg-blanco;
+        margin-left: -10px;
+        min-width: 370px;
+    }
+
+    input:nth-child(4){
         width: 95%;
         background: $bg-blanco;
         margin-left: -10px;
@@ -357,6 +377,12 @@ footer{
     .showResults img{
         float:none;
         width: 100%;
+    }
+
+    .showResults a{
+        width: 76px;
+        height: 40px;
+        text-align: center;
     }
 }
 
@@ -379,13 +405,25 @@ footer{
         border-bottom: 0;
     }
 
-    input[type=text]{
+    input:nth-child(1){
         width: 100vw;
         margin-left: -30px;
         min-width: 370px;
     }
 
-    input[type=date]{
+    input:nth-child(2){
+        width: 100vw;
+        margin-left: -30px;
+        min-width: 370px;
+    }
+
+    input:nth-child(3){
+        width: 100vw;
+        margin-left: -30px;
+        min-width: 370px;
+    }
+
+    input:nth-child(4){
         width: 100vw;
         margin-left: -30px;
         min-width: 370px;
