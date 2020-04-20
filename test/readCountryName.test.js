@@ -1,5 +1,5 @@
 const readCountryName = require('../src/server/countries');
 
-test("readCountryCode 'input: Not Found' ", () => {
-    expect(readCountryName("David")).toBe("Country not found");
+test("readCountryCode 'input: Found' ", () => {
+    expect(readCountryName("US")).toBe("United States");
 });

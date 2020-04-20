@@ -248,9 +248,7 @@ let countries = [
     for(const index in countries){
       if(country == countries[index].name){
         return countries[index].code;
-      }else{
-        return "Country not found";
-      } 
+      }
     }
   }
 

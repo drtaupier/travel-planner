@@ -15,8 +15,6 @@ export function handleSubmit(e){
         country = 'US';
     }else{
         country = readCountryCode(country1);
-        console.log(country);
-        
     }
     const dateStart = document.getElementById('dateStart').value;
     const dateFinish = document.getElementById('dateFinish').value;

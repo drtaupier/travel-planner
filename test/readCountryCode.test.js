@@ -1,5 +1,5 @@
 import {readCountryCode} from '../src/client/js/countries';
 
-test("readCountryCode 'input: Not Found' ", () => {
-    expect(readCountryCode("David")).toBe("Country not found");
+test("readCountryCode 'input: Found' ", () => {
+    expect(readCountryCode("United States")).toBe("US");
 });
