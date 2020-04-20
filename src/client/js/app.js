@@ -1,5 +1,5 @@
 import {UI} from './classes'
-import {readCountry} from './countries'
+import {readCountryCode} from './countries'
 //Variables globales:
 const form = document.getElementById('form');
 //Instanciando clases:
@@ -14,7 +14,9 @@ export function handleSubmit(e){
     if (country1 === ""){
         country = 'US';
     }else{
-        country = readCountry(country1);
+        country = readCountryCode(country1);
+        console.log(country);
+        
     }
     const dateStart = document.getElementById('dateStart').value;
     const dateFinish = document.getElementById('dateFinish').value;
@@ -68,4 +70,5 @@ const postData = async(url='', data={})=>{
    }catch(error){
        console.log('Error: ', error);
    }
- }     
+ }
+ 

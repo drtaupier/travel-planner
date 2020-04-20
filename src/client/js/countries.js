@@ -244,10 +244,15 @@ let countries = [
     {name: 'Zimbabwe', code: 'ZW'} 
   ]
 
-  export function readCountry(country){
+    export function readCountryCode(country){
     for(const index in countries){
       if(country == countries[index].name){
         return countries[index].code;
+      }else{
+        return "Country not found";
       } 
     }
   }
+
+  
+  
