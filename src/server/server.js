@@ -1,3 +1,4 @@
+const readCountryName = require('./countries');
 require('dotenv').config();
 var Request = require("request");
 //Express to run server and routes
@@ -30,9 +31,8 @@ app.post('/myTrips', (req,res)=>{
     let diferencia = req.body.diferencia;
     let lat = "";
     let long = "";
-    let weather = "";
     let geoUrl = `http://api.geonames.org/postalCodeSearchJSON?placename=${destination}&maxRows=1&operator=AND&country=${countryCode}&username=${process.env.GEONAMES_USERNAME}`;
-
+    
     Request.get(geoUrl, (error, response, body) => {
         if(error) {
             return console.dir(error);
@@ -62,19 +62,47 @@ app.post('/myTrips', (req,res)=>{
                 }
                 //Get pixar information
                 let pixarData = JSON.parse(body3);
-                let pixar = pixarData.hits[0].webformatURL;
+                let pixar = "";
+                if(pixarData.hits != null && pixarData.hits.length > 0 && pixarData.hits[0].webformatURL != null && pixarData.hits[0].webformatURL.length > 0){
+                    pixar = pixarData.hits[0].webformatURL;
+                    let info = {
+                        "weatherTemp":weatherTemp,
+                        "weatherDescription":weatherDescription,
+                        "imageWeb":pixar,
+                        "destination": destination,
+                        "country": countryCode,
+                        "dateStart": dateStart,
+                        "dateFinish": dateFinish,
+                        "diferencia": diferencia
+                    }
+                    res.send(info); //Info enviada al cliente
+                }else{
+                    let country = readCountryName(countryCode);
+                    console.log(country);
+                    pixarCountryUrl = `https://pixabay.com/api/?key=${process.env.PIXABAY_KEY}&q=${country}&image_type=photo&orientation=horizontal&page=1&per_page=3`;
+                    console.log(pixarCountryUrl);
+                    
+                    Request.get(pixarCountryUrl, (error4,response4, body4) => {
+                        if(error4){
+                            return console.dir(error4);
+                        }
+                        //Get pixar information
+                        let pixarData2 = JSON.parse(body4);
+                        pixar = pixarData2.hits[0].webformatURL;
 
-                let info = {
-                    "weatherTemp":weatherTemp,
-                    "weatherDescription":weatherDescription,
-                    "imageWeb":pixar,
-                    "destination": destination,
-                    "country": countryCode,
-                    "dateStart": dateStart,
-                    "dateFinish": dateFinish,
-                    "diferencia": diferencia
+                        let info = {
+                            "weatherTemp":weatherTemp,
+                            "weatherDescription":weatherDescription,
+                            "imageWeb":pixar,
+                            "destination": destination,
+                            "country": countryCode,
+                            "dateStart": dateStart,
+                            "dateFinish": dateFinish,
+                            "diferencia": diferencia
+                        }
+                        res.send(info); //Info enviada al cliente
+                    })
                 }
-                res.send(info); //Info enviada al cliente
             });
         });
     });
