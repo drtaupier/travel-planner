@@ -10,9 +10,6 @@ module.exports = {
     path: path.join(__dirname, 'dist'),
     filename: 'main.js'
   },
-  node: {
-    fs: "empty"
- },
   module: {
       rules:[
         {
